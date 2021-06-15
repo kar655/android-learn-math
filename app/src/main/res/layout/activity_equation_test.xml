@@ -6,27 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".EquationTestActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <RelativeLayout
+        android:id="@+id/relativeLayoutHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Equation"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewEquation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Equation"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textViewCurrentEquation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/textViewEquation"
+            android:text="Unknown" />
+
+        <TextView
+            android:id="@+id/textViewEquationSlash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textViewCurrentEquation"
+            android:text="/" />
+
+        <TextView
+            android:id="@+id/textViewEquationOf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textViewEquationSlash"
+            android:text="Unknown" />
+
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/textViewEquation"
+        android:id="@+id/textViewEquationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:text="Equation Text"
         android:textSize="60sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayoutHeader"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayoutHeader"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayoutHeader" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -77,8 +111,8 @@
         android:text="Unknown"
         android:textSize="20sp"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayoutHeader"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayoutHeader"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayoutHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

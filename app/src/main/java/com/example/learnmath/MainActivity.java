@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button buttonTakeTest;
     private ArrayList<Equation> equations;
+    private static final int TESTS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EquationTestActivity.class);
 
-                equations = EquationGenerator.generateEquations(1);
+                equations = EquationGenerator.generateEquations(TESTS);
 
-                intent.putExtra(EquationTestActivity.INTENT_EQUATION, equations.get(0));
+                intent.putExtra(EquationTestActivity.INTENT_EQUATION, equations);
                 startActivity(intent);
             }
         });
