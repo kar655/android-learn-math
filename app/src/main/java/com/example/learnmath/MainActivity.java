@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.learnmath.equation.Equation;
+import com.example.learnmath.equation.EquationGenerator;
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonTakeTest;
+    private ArrayList<Equation> equations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, EquationTestActivity.class);
+
+                equations = EquationGenerator.generateEquations(1);
+
+                intent.putExtra(EquationTestActivity.INTENT_EQUATION, equations.get(0));
                 startActivity(intent);
             }
         });

@@ -1,6 +1,8 @@
 package com.example.learnmath.equation;
 
-public class Equation {
+import java.io.Serializable;
+
+public class Equation implements Serializable {
     private final int first;
     private final int second;
     private final int result;
@@ -48,16 +50,24 @@ public class Equation {
         return stringBuilder.toString();
     }
 
+    private int getMissing() {
+        if (removed == EquationPart.FIRST) {
+            return first;
+        } else if (removed == EquationPart.SECOND) {
+            return second;
+        } else {
+            return result;
+        }
+    }
+
+    public String getResult() {
+        return correct ? "Success! " + chosen + " is correct!"
+                : "Passed value " + chosen + " is not correct.\n" + getMissing() + " was expected.";
+    }
+
     public void makeGuess(int value) {
         chosen = value;
-
-        if (removed == EquationPart.FIRST) {
-            correct = first == chosen;
-        } else if (removed == EquationPart.SECOND) {
-            correct = second == chosen;
-        } else {
-            correct = result == chosen;
-        }
+        correct = getMissing() == chosen;
     }
 
     public boolean isCorrect() {
