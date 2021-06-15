@@ -29,6 +29,7 @@ public class EquationTestActivity extends AppCompatActivity {
     private Equation equation;
     private boolean afterResult = false;
     private int currentEquation = 0;
+    private int correctResponses = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class EquationTestActivity extends AppCompatActivity {
 
                 if (equation.isCorrect()) {
                     textViewResult.setTextColor(Color.GREEN);
+                    correctResponses++;
                 } else {
                     textViewResult.setTextColor(Color.RED);
                 }
@@ -100,6 +102,18 @@ public class EquationTestActivity extends AppCompatActivity {
         editTextNumberPassed.setVisibility(View.VISIBLE);
         afterResult = false;
         currentEquation++;
+
+        if (currentEquation == equations.size()) {
+            // Call to new activity showing result
+            Intent intent = new Intent(EquationTestActivity.this, ResultActivity.class);
+
+            intent.putExtra(ResultActivity.INTENT_CORRECT_RESPONSES, correctResponses);
+            intent.putExtra(ResultActivity.INTENT_ALL_RESPONSES, equations.size());
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         textViewCurrentEquation.setText(String.valueOf(currentEquation + 1));
 
         equation = equations.get(currentEquation);
