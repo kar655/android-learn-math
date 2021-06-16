@@ -19,13 +19,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonTakeTest"
+        android:id="@+id/buttonTakeTestEasy"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
-        android:text="Take test"
+        android:text="Take easy test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeText" />
+
+    <Button
+        android:id="@+id/buttonTakeTestMedium"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Take medium test"
+        app:layout_constraintEnd_toEndOf="@+id/buttonTakeTestEasy"
+        app:layout_constraintStart_toStartOf="@+id/buttonTakeTestEasy"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTakeTestEasy" />
+
+    <Button
+        android:id="@+id/buttonTakeTestHard"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Take hard test"
+        app:layout_constraintEnd_toEndOf="@+id/buttonTakeTestMedium"
+        app:layout_constraintStart_toStartOf="@+id/buttonTakeTestMedium"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTakeTestMedium" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

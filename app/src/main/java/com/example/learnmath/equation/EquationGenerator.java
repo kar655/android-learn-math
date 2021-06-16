@@ -4,15 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EquationGenerator {
-    private static final int MAX_VALUE = 20;
-    private static final int MIN_VALUE = 1;
     private static final Random random = new Random();
 
     private EquationGenerator() {
-    }
-
-    private static int generateNumber() {
-        return random.nextInt(MAX_VALUE - MIN_VALUE) + MIN_VALUE;
     }
 
     private static EquationPart generateMissingPart() {
@@ -43,12 +37,12 @@ public class EquationGenerator {
         }
     }
 
-    public static ArrayList<Equation> generateEquations(int number) {
+    public static ArrayList<Equation> generateEquations(EquationDifficulty difficulty) {
         final ArrayList<Equation> equations = new ArrayList<>();
 
-        for (int i = 0; i < number; ++i) {
-            int first = generateNumber();
-            int second = generateNumber();
+        for (int i = 0; i < difficulty.getTests(); ++i) {
+            int first = difficulty.generateNumber();
+            int second = difficulty.generateNumber();
             equations.add(new Equation(
                     first,
                     second,
