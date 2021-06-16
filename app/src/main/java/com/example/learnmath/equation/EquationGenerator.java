@@ -30,10 +30,8 @@ public class EquationGenerator {
                 return EquationType.ADD;
             case 1:
                 return EquationType.SUB;
-            case 2:
-                return EquationType.MUL;
             default:
-                return EquationType.DIV;
+                return EquationType.MUL;
         }
     }
 
@@ -43,10 +41,17 @@ public class EquationGenerator {
         for (int i = 0; i < difficulty.getTests(); ++i) {
             int first = difficulty.generateNumber();
             int second = difficulty.generateNumber();
+            EquationType type = generateType();
+
+            // Prevent calculate errors
+            if ((first == 0 || second == 0) && type == EquationType.MUL) {
+                type = EquationType.SUB;
+            }
+
             equations.add(new Equation(
                     first,
                     second,
-                    generateType(),
+                    type,
                     generateMissingPart()
             ));
         }
