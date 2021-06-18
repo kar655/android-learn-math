@@ -109,6 +109,7 @@ public class EquationTestActivity extends AppCompatActivity {
 
             intent.putExtra(ResultActivity.INTENT_CORRECT_RESPONSES, correctResponses);
             intent.putExtra(ResultActivity.INTENT_ALL_RESPONSES, equations.size());
+            intent.putExtra(ResultActivity.INTENT_EQUATION, equations);
             startActivity(intent);
             finish();
             return;

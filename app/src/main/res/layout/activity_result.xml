@@ -48,4 +48,14 @@
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/buttonCheckResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Check Results"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPracticeMore"
+        app:layout_constraintEnd_toEndOf="@+id/buttonPracticeMore"
+        app:layout_constraintStart_toStartOf="@+id/buttonPracticeMore" />
 </androidx.constraintlayout.widget.ConstraintLayout>

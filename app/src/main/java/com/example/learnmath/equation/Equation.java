@@ -65,6 +65,10 @@ public class Equation implements Serializable {
                 : "Passed value " + chosen + " is not correct.\n" + getMissing() + " was expected.";
     }
 
+    public String getSummaryString() {
+        return toString() + " is " + (correct ? "Correct" : "Wrong");
+    }
+
     public void makeGuess(int value) {
         chosen = value;
         correct = getMissing() == chosen;
