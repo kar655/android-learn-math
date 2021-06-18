@@ -39,7 +39,7 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
 
-        EquationSummaryAdapter adapter = new EquationSummaryAdapter(SummaryActivity.this);
+        EquationSummaryAdapter adapter = new EquationSummaryAdapter();
         adapter.setEquations(equations);
 
         recyclerView.setAdapter(adapter);

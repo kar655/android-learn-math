@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -64,7 +65,7 @@ public class EquationTestActivity extends AppCompatActivity {
                 }
 
                 String passedNumber = editTextNumberPassed.getText().toString();
-                if (passedNumber.isEmpty()) {
+                if (passedNumber.isEmpty() || passedNumber.equals("-")) {
                     textViewErrorMessage.setVisibility(View.VISIBLE);
                     return;
                 }
@@ -77,6 +78,9 @@ public class EquationTestActivity extends AppCompatActivity {
                 editTextNumberPassed.setText("");
                 editTextNumberPassed.setVisibility(View.GONE);
                 buttonCheckEquation.setText("NEXT");
+                ViewGroup.LayoutParams params = buttonCheckEquation.getLayoutParams();
+                params.width = (int) getResources().getDimension(R.dimen.button);
+                buttonCheckEquation.setLayoutParams(params);
 
                 equation.makeGuess(number);
 
@@ -97,6 +101,10 @@ public class EquationTestActivity extends AppCompatActivity {
 
     private void resetViews() {
         buttonCheckEquation.setText("CHECK");
+        ViewGroup.LayoutParams params = buttonCheckEquation.getLayoutParams();
+        params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        buttonCheckEquation.setLayoutParams(params);
+
         editTextNumberPassed.setText("");
         textViewResult.setVisibility(View.INVISIBLE);
         editTextNumberPassed.setVisibility(View.VISIBLE);
