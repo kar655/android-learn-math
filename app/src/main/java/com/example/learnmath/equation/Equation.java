@@ -21,12 +21,11 @@ public class Equation implements Serializable {
         this.result = EquationType.getFunction(this.type).apply(this.first, this.second);
     }
 
-    @Override
-    public String toString() {
+    private String toStringReplaceEmpty(String replacement) {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (removed == EquationPart.FIRST) {
-            stringBuilder.append('_');
+            stringBuilder.append(replacement);
         } else {
             stringBuilder.append(first);
         }
@@ -34,7 +33,7 @@ public class Equation implements Serializable {
         stringBuilder.append(' ').append(type.toString()).append(' ');
 
         if (removed == EquationPart.SECOND) {
-            stringBuilder.append('_');
+            stringBuilder.append(replacement);
         } else {
             stringBuilder.append(second);
         }
@@ -42,12 +41,17 @@ public class Equation implements Serializable {
         stringBuilder.append(" = ");
 
         if (removed == EquationPart.RESULT) {
-            stringBuilder.append('_');
+            stringBuilder.append(replacement);
         } else {
             stringBuilder.append(result);
         }
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return toStringReplaceEmpty("_");
     }
 
     private int getMissing() {
@@ -66,7 +70,8 @@ public class Equation implements Serializable {
     }
 
     public String getSummaryString() {
-        return toString() + " is " + (correct ? "Correct" : "Wrong");
+        return toStringReplaceEmpty(String.valueOf(chosen)) + " is " + (correct ? "correct!"
+                : "wrong, expected " + toStringReplaceEmpty(String.valueOf(getMissing())));
     }
 
     public void makeGuess(int value) {
